@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'stack#index'
+  root to: 'home#index'
 
-  get ':page' => 'stack#show', as: 'stack'
-  
+  resources :stack, only: %i(index show)
 end

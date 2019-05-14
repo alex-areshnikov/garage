@@ -1,14 +1,13 @@
 class StackController < ApplicationController
   before_action :chat_var
-  layout :stack_layout
+  layout "stack"
   def index; end
 
-  def show()
-    
-    params[:page] = 'index' unless params[:page]
+  def show
+    params[:id] = 'index' unless params[:id]
     # FAKE PARAMS
    
-    render 'stack/'+ params[:page]
+    render 'stack/'+ params[:id]
   end
 
   private

@@ -4,12 +4,13 @@ default: &default
   pool: 5
   username: postgres
   password: 
-  host:  <%= ENV['DATABASE_URL'] %>
+  host:  <%= ENV["DB_HOST"] %>
 
 development:
   <<: *default
-  database: stackrails_dev
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
 
 production:
   <<: *default
-  database: stackrails
+  database: <%= ENV["DB_NAME"] %>
