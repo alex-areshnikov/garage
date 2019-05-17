@@ -1,0 +1,16 @@
+ru:
+  activerecord:
+    models:
+      site: "Участок"
+    attributes:
+      site:
+        name: "Номер участка"
+        area: "Общая площадь (м²)"
+        built: "Достроен"
+        registered: "Зарегестрирован в БТИ"
+        basement: "Подвал"
+        cars_count: "Количество машиномест"
+        electricity: "Электричество"
+        electricity_counter_name: "Номер счетчика"
+        electricity_counter_expiration_date: "Счетчик действителен до"
+        rented: "Арендован"

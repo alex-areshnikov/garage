@@ -1,0 +1,19 @@
+h1
+  = t :sites
+
+table
+  thead
+    tr
+      th #{t 'activerecord.attributes.site.name'}
+      th colspan="2"
+
+  tbody
+    - @sites.each do |site|
+      tr
+        td #{ link_to site.name, admin_site_path(site) }
+        td #{ link_to t(:edit), edit_admin_site_path(site) }
+        td #{ link_to t(:destroy), admin_site_path(site), method: :delete, data: { confirm: 'Are you sure?' } }
+
+br
+
+= link_to "#{t :new} #{t 'activerecord.models.site'}", new_admin_site_path
