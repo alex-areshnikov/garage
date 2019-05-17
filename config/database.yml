@@ -1,15 +1,20 @@
 default: &default
   adapter: postgresql
+  host:  <%= ENV["DB_HOST"] %>
+  port: <%= ENV["DB_PORT"] || 5432 %>
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  database: <%= ENV["DB_NAME"] %>
   encoding: unicode
   pool: 5
-  username: postgres
-  password: 
-  host:  <%= ENV["DB_HOST"] %>
 
 development:
   <<: *default
-  username: <%= ENV["DB_USERNAME"] %>
-  password: <%= ENV["DB_PASSWORD"] %>
+  database: garage_dev
+
+test:
+  <<: *default
+  database: garage_test
 
 production:
   <<: *default
