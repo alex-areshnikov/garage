@@ -9,6 +9,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'rails', '~> 5.2.2'
 
 gem 'devise'
+gem 'slim'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
