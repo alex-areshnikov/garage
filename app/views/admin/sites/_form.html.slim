@@ -1,0 +1,67 @@
+.mt-4
+  = form_with(model: [:admin, site], local: true) do |form|
+    - if site.errors.any?
+      #error_explanation.alert.alert-danger
+        - site.errors.full_messages.each do |message|
+          = message
+
+    .form-group.row
+      .col-sm-4.col-form-label
+        = form.label :name
+      .col-sm-8.col-md-4
+        = form.text_field :name, class: 'form-control'
+
+    .form-group.row
+      = form.label :area, class: 'col-sm-4 col-form-label'
+      .col-sm-8.col-md-4
+        = form.number_field :area, class: 'form-control'
+
+    .form-group.form-check
+      = form.check_box :built, class: "form-check-input",
+              data: { toggle: "collapse", target: "#register-section"},
+              aria: { controls: "register-section", expanded: @site.built }
+      = form.label :built, class: "form-check-label"
+
+    #register-section.form-group.form-check.collapse class="#{"show" if @site.built}"
+      = form.check_box :registered, class: "form-check-input"
+      = form.label :registered, class: "form-check-label"
+
+    .form-group.form-check
+      = form.check_box :basement, class: "form-check-input"
+      = form.label :basement, class: "form-check-label"
+
+    .form-group.form-check
+      = form.check_box :rented, class: "form-check-input"
+      = form.label :rented, class: "form-check-label"
+
+    .form-group.row
+      = form.label :cars_count, class: 'col-sm-4 col-form-label'
+      .col-sm-8.col-md-4
+        = form.number_field :cars_count, class: 'form-control'
+
+    .form-group.form-check
+      = form.check_box :electricity, class: "form-check-input",
+              data: { toggle: "collapse", target: "#electricity-section"},
+              aria: { controls: "electricity-section", expanded: @site.electricity }
+      = form.label :electricity, class: "form-check-label"
+
+    #electricity-section.collapse class="#{"show" if @site.electricity}"
+      .form-group.row
+        = form.label :electricity_counter_name, class: 'col-sm-4 col-form-label'
+        .col-sm-8.col-md-4
+          = form.text_field :electricity_counter_name, class: 'form-control'
+
+      .form-group.row
+        = form.label :electricity_counter_expiration_date, class: 'col-sm-4 col-form-label'
+        .col-sm-8.col-md-4
+          = form.date_select :electricity_counter_expiration_date, class: 'form-control'
+
+    .d-flex.justify-content-center
+      .actions.row
+        .col.px-1
+          = form.submit class: 'btn btn-primary'
+        - unless @site.new_record?
+          .col.px-1
+            = link_to t(:show), admin_site_path(@site), class: 'btn btn-success'
+        .col.px-1
+          = link_to t(:back), admin_sites_path, class: 'btn btn-outline-secondary'

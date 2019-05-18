@@ -1,19 +1,16 @@
-h1
-  = t :sites
+.card.card-form.w-100
+  .card-body
+    h1
+      = t :sites
 
-table
-  thead
-    tr
-      th #{t 'activerecord.attributes.site.name'}
-      th colspan="2"
+    table.table.table-hover.mt-4
+      tbody
+        - @sites.each do |site|
+          tr
+            td #{ link_to site.name, admin_site_path(site) }
+            td
+              .d-flex.justify-content-end
+                = link_to content_tag(:i, 'edit', class: 'material-icons'), edit_admin_site_path(site), class: 'text-secondary'
+                = link_to content_tag(:i, 'delete', class: 'material-icons'), admin_site_path(site), method: :delete, data: { confirm: t(:are_you_sure) }, class: 'text-danger'
 
-  tbody
-    - @sites.each do |site|
-      tr
-        td #{ link_to site.name, admin_site_path(site) }
-        td #{ link_to t(:edit), edit_admin_site_path(site) }
-        td #{ link_to t(:destroy), admin_site_path(site), method: :delete, data: { confirm: 'Are you sure?' } }
-
-br
-
-= link_to "#{t :new} #{t 'activerecord.models.site'}", new_admin_site_path
+    = link_to "#{t :new} #{t 'activerecord.models.site'}", new_admin_site_path, class: 'float-right btn btn-primary'

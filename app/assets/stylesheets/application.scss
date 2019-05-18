@@ -33,3 +33,9 @@
 @import 'pagination';
 @import 'page-separator';
 @import 'preloader';
+
+.collapsing {
+  -webkit-transition: none;
+  transition: none;
+  display: none;
+}

@@ -1,6 +1,7 @@
 .card.card-form
   .row.no-gutters
     .card-body
-      h1 #{t :new} #{t 'activerecord.models.site'}</h1>
+      h1
+        = "#{t :edit} #{t 'activerecord.models.site'}"
 
       = render 'form', site: @site

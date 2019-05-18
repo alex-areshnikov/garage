@@ -1,0 +1,50 @@
+.card.card-form
+  .row.no-gutters
+    .card-body
+      h1
+        = @site.name
+
+      p.mt-4
+        strong #{t('activerecord.attributes.site.area')}:
+        = @site.area.blank? ? t(:unknown) : @site.area
+
+      p
+        strong #{t('activerecord.attributes.site.built')}:
+        = @site.built
+
+      - if @site.built
+        p
+          strong #{t('activerecord.attributes.site.registered')}:
+          = @site.registered
+
+      p
+        strong #{t('activerecord.attributes.site.basement')}:
+        = @site.basement
+
+      p
+        strong #{t('activerecord.attributes.site.rented')}:
+        = @site.rented
+
+      p
+        strong #{t('activerecord.attributes.site.cars_count')}:
+        = @site.cars_count
+
+      p
+        strong #{t('activerecord.attributes.site.electricity')}:
+        = @site.electricity
+
+      - if @site.electricity
+        p
+          strong #{t('activerecord.attributes.site.electricity_counter_name')}:
+          = @site.electricity_counter_name.blank? ? t(:unknown) : @site.electricity_counter_name
+
+        p
+          strong #{t('activerecord.attributes.site.electricity_counter_expiration_date')}:
+          = @site.electricity_counter_expiration_date
+
+      .d-flex.justify-content-center
+        .actions.row
+          .col.px-1
+            = link_to t(:edit), edit_admin_site_path(@site), class: 'btn btn-primary'
+          .col.px-1
+            = link_to t(:back), admin_sites_path, class: 'btn btn-outline-secondary'

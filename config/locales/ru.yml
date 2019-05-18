@@ -10,3 +10,8 @@ ru:
   show: "Показать"
   edit: "Редактировать"
   destroy: "Удалить"
+  are_you_sure: "Вы уверены?"
+  unknown: "Неизвестно"
+  was_created: "%{name} создан успешно"
+  was_updated: "%{name} изменен успешно"
+  was_destroyed: "%{name} удален успешно"

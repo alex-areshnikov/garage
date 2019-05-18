@@ -18,7 +18,7 @@ module Admin
       @site = Site.new(site_params)
 
       if @site.save
-        redirect_to admin_site_path(@site), notice: 'Site was successfully created.'
+        redirect_to admin_site_path(@site), notice: t(:was_created, name: @site.name)
       else
         render :new
       end
@@ -26,7 +26,7 @@ module Admin
 
     def update
       if @site.update(site_params)
-        redirect_to admin_site_path(@site), notice: 'Site was successfully updated.'
+        redirect_to admin_site_path(@site), notice: t(:was_updated, name: @site.name)
       else
         render :edit
       end
@@ -34,10 +34,8 @@ module Admin
 
     def destroy
       @site.destroy
-      respond_to do |format|
-        format.html {redirect_to sites_url, notice: 'Site was successfully destroyed.'}
-        format.json {head :no_content}
-      end
+
+      redirect_to admin_sites_path, notice: t(:was_destroyed, name: @site.name)
     end
 
     private
