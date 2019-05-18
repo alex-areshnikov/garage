@@ -6,7 +6,11 @@
           h1
             = @site.name
         .col-6.d-flex.justify-content-end
-          = link_to content_tag(:i, 'delete', class: 'material-icons large'), admin_site_path(@site), class: 'text-danger',
+          .pl-3
+            = link_to content_tag(:i, 'edit', class: 'material-icons'), edit_admin_site_path(@site), class: 'text-secondary',
+                    title: t(:edit), data: {toggle: "tooltip", placement: "top" }
+          .pl-3
+            = link_to content_tag(:i, 'delete', class: 'material-icons'), admin_site_path(@site), class: 'text-danger',
                   title: t(:destroy), method: :delete,
                   data: {toggle: "tooltip", placement: "top", confirm: t(:are_you_sure), cancel: t(:cancel), commit: t(:confirm)}
 
@@ -66,13 +70,6 @@
           .col-md-8
             = @site.electricity_counter_expiration_date
 
-      .d-flex.justify-content-center.mt-4
-        .actions.row
-          .col.px-1
-            = link_to t(:edit), edit_admin_site_path(@site), class: 'btn btn-primary'
-          .col.px-1
-            = link_to t(:back), admin_sites_path, class: 'btn btn-outline-secondary'
-
 
 - @site.people.group_by(&:person_type).each do |person_type, people|
   .card.card-form.w-100
@@ -82,7 +79,8 @@
           h1
             = t("#{person_type}s")
         .col-6.d-flex.justify-content-end
-          = link_to content_tag(:i, 'edit', class: 'material-icons large'), admin_site_people_path(@site), class: 'text-secondary'
+          = link_to content_tag(:i, 'edit', class: 'material-icons large'), admin_site_people_path(@site), class: 'text-secondary',
+                  title: t(:edit), data: {toggle: "tooltip", placement: "top" }
 
       - people.each do |person|
         .row.my-2
@@ -91,3 +89,8 @@
               = person.full_name
           .col-md-8 |
             +375 29 2313213
+
+.d-flex.justify-content-center.mt-4
+  .actions.row
+    .col.px-1
+      = link_to t(:back), admin_sites_path, class: 'btn btn-secondary'
