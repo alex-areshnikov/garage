@@ -4,6 +4,7 @@ class Person < ApplicationRecord
   extend Enumerize
 
   belongs_to :site
+  has_many :phones, dependent: :destroy
 
   validates_presence_of :first_name, :last_name, :person_type
 

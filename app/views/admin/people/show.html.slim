@@ -7,7 +7,11 @@
             = @person.full_name
 
         .col-6.d-flex.justify-content-end
-          = link_to content_tag(:i, 'delete', class: 'material-icons large'), admin_site_person_path(@person.site, @person),
+          .pl-3
+            = link_to content_tag(:i, 'edit', class: 'material-icons'), edit_admin_site_person_path(@person.site, @person),
+                  class: 'text-secondary', title: t(:edit), data: {toggle: "tooltip", placement: "top"}
+          .pl-3
+            = link_to content_tag(:i, 'delete', class: 'material-icons large'), admin_site_person_path(@person.site, @person),
                   class: 'text-danger', title: t(:destroy), method: :delete,
                   data: {toggle: "tooltip", placement: "top", confirm: t(:are_you_sure), cancel: t(:cancel), commit: t(:confirm)}
 
@@ -41,10 +45,20 @@
         .col-md-8
           = unknown_if_blank @person.passport_issue_date, check_object: @person.passport_number
 
+      - if @person.phones.exists?
+        .row.mt-5
+          .col-md-4
+            strong #{t('phones')}:
 
-      .d-flex.justify-content-center.mt-4
-        .actions.row
-          .col.px-1
-            = link_to t(:edit), edit_admin_site_person_path(@person.site, @person), class: 'btn btn-primary'
-          .col.px-1
-            = link_to t(:back), admin_site_people_path(@person.site), class: 'btn btn-outline-secondary'
+      - @person.phones.each do |phone|
+        .row.my-2
+          .col-md-4
+            = phone.full_number
+          .col-md-8
+            = phone.description
+
+
+.d-flex.justify-content-center.mt-4
+  .actions.row
+    .col.px-1
+      = link_to t(:back), admin_site_people_path(@person.site), class: 'btn btn-secondary'

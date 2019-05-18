@@ -87,8 +87,13 @@
           .col-md-4
             strong
               = person.full_name
-          .col-md-8 |
-            +375 29 2313213
+          .col-md-8
+            - person.phones.each do |phone|
+              .row.mb-4
+                .col-md-4
+                  = phone.full_number
+                .col-md-8
+                  = phone.description
 
 .d-flex.justify-content-center.mt-4
   .actions.row

@@ -3,17 +3,27 @@ class Phone < ApplicationRecord
 
   COUNTRY_CODE = 'BY'.freeze
 
-  validates_presence_of :number
+  belongs_to :person
+
+  validates :number, phone: true
 
   delegate :carrier, to: :phone
 
-  def number
+  def number_international
     phone.international
+  end
+
+  def number_national
+    phone.national
+  end
+
+  def full_number
+    "#{number_international} (#{carrier})"
   end
 
   def number=(value)
     parsed_phone = Phonelib.parse(value, COUNTRY_CODE)
-    super(parsed_phone.international) if parsed_phone.valid?
+    super(parsed_phone.valid? ? parsed_phone.international(false) : value)
   end
 
   private
