@@ -10,7 +10,12 @@
             td #{ link_to site.name, admin_site_path(site) }
             td
               .d-flex.justify-content-end
-                = link_to content_tag(:i, 'edit', class: 'material-icons'), edit_admin_site_path(site), class: 'text-secondary'
-                = link_to content_tag(:i, 'delete', class: 'material-icons'), admin_site_path(site), method: :delete, data: { confirm: t(:are_you_sure) }, class: 'text-danger'
+                = link_to content_tag(:i, 'people', class: 'material-icons'), root_path, class: 'text-secondary',
+                        title: "#{t :owners}/#{t :renters}", data: {toggle: "tooltip", placement: "top"}
+                = link_to content_tag(:i, 'assignment', class: 'material-icons'), edit_admin_site_path(site), class: 'text-secondary',
+                        title: t(:edit), data: {toggle: "tooltip", placement: "top"}
+                = link_to content_tag(:i, 'delete', class: 'material-icons'), admin_site_path(site), class: 'text-danger',
+                        title: t(:destroy), method: :delete,
+                        data: { toggle: "tooltip", placement: "top", confirm: t(:are_you_sure), cancel: t(:cancel), commit: t(:confirm) }
 
     = link_to "#{t :new} #{t 'activerecord.models.site'}", new_admin_site_path, class: 'float-right btn btn-primary'

@@ -1,7 +1,8 @@
 doctype html
 html
   head
-    title Stack-Rails - Rails 5 &amp; Bootstrap 4 Admin Dashboard</title>
+    title
+      = t :website_title
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -19,7 +20,6 @@ body.layout-fluid
 
     = yield
 
-  = javascript_include_tag 'core-scripts', 'data-turbolinks-track': 'reload'
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   = content_for :footer_scripts

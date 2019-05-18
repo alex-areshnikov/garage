@@ -25,6 +25,8 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
+gem 'bootstrap'
+gem 'data-confirm-modal'
 gem 'jquery-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -61,3 +63,4 @@ gem 'sprockets-es6'
 
 gem 'pg'
 gem "seedbank"
+gem 'phonelib'

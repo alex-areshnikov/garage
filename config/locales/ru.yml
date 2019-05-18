@@ -1,5 +1,6 @@
 ru:
   hello: "Привет мир!"
+  website_title: "Bazza онлайн"
   menu: "Меню"
   log_in: "Войти"
   log_out: "Выйти из системы"
@@ -12,6 +13,10 @@ ru:
   destroy: "Удалить"
   are_you_sure: "Вы уверены?"
   unknown: "Неизвестно"
+  owners: "Владельцы"
+  renters: "Арендаторы"
+  cancel: "Отменить"
+  confirm: "Подтвердить"
   was_created: "%{name} создан успешно"
   was_updated: "%{name} изменен успешно"
   was_destroyed: "%{name} удален успешно"
