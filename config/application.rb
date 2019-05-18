@@ -17,6 +17,14 @@ module StackRails
 
     config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 
+    config.autoload_paths += %W[
+      #{config.root}/lib
+    ]
+
+    config.eager_load_paths += %W[
+      #{config.root}/lib/seedbank
+    ]
+
     config.assets.precompile = ["application.es6"]
 
     config.assets.initialize_on_precompile = false

@@ -4,45 +4,63 @@
       h1
         = @site.name
 
-      p.mt-4
-        strong #{t('activerecord.attributes.site.area')}:
-        = @site.area.blank? ? t(:unknown) : @site.area
+      .row.mt-4.mb-2
+        .col-md-4
+          strong #{t('activerecord.attributes.site.area')}:
+        .col-md-8
+          = @site.area.blank? ? t(:unknown) : @site.area
 
-      p
-        strong #{t('activerecord.attributes.site.built')}:
-        = @site.built
+      .row.my-2
+        .col-md-4
+          strong #{t('activerecord.attributes.site.built')}:
+        .col-md-8
+          = yes_no_icon @site.built
 
       - if @site.built
-        p
-          strong #{t('activerecord.attributes.site.registered')}:
-          = @site.registered
+        .row.my-2
+          .col-md-4
+            strong #{t('activerecord.attributes.site.registered')}:
+          .col-md-8
+            = yes_no_icon @site.registered
 
-      p
-        strong #{t('activerecord.attributes.site.basement')}:
-        = @site.basement
+      .row.my-2
+        .col-md-4
+          strong #{t('activerecord.attributes.site.basement')}:
+        .col-md-8
+          = yes_no_icon @site.basement
 
-      p
-        strong #{t('activerecord.attributes.site.rented')}:
-        = @site.rented
+      .row.my-2
+        .col-md-4
+          strong #{t('activerecord.attributes.site.rented')}:
+        .col-md-8
+          = yes_no_icon @site.rented
 
-      p
-        strong #{t('activerecord.attributes.site.cars_count')}:
-        = @site.cars_count
+      .row.my-2
+        .col-md-4
+          strong #{t('activerecord.attributes.site.cars_count')}:
+        .col-md-8
+          = @site.cars_count.blank? ? t(:unknown) : @site.cars_count
 
-      p
-        strong #{t('activerecord.attributes.site.electricity')}:
-        = @site.electricity
+      .row.my-2
+        .col-md-4
+          strong #{t('activerecord.attributes.site.electricity')}:
+        .col-md-8
+          = yes_no_icon @site.electricity
 
       - if @site.electricity
-        p
-          strong #{t('activerecord.attributes.site.electricity_counter_name')}:
-          = @site.electricity_counter_name.blank? ? t(:unknown) : @site.electricity_counter_name
+        .row.my-2
+          .col-md-4
+            strong #{t('activerecord.attributes.site.electricity_counter_name')}:
+          .col-md-8
+            = @site.electricity_counter_name.blank? ? t(:unknown) : @site.electricity_counter_name
 
-        p
-          strong #{t('activerecord.attributes.site.electricity_counter_expiration_date')}:
-          = @site.electricity_counter_expiration_date
+        .row.my-2
+          .col-md-4
+            strong #{t('activerecord.attributes.site.electricity_counter_expiration_date')}:
+          .col-md-8
+            = @site.electricity_counter_expiration_date
 
-      .d-flex.justify-content-center
+      .d-flex.justify-content-center.mt-4
         .actions.row
           .col.px-1
             = link_to t(:edit), edit_admin_site_path(@site), class: 'btn btn-primary'

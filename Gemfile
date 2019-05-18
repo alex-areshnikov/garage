@@ -60,4 +60,4 @@ gem 'sprockets'
 gem 'sprockets-es6'
 
 gem 'pg'
-
+gem "seedbank"

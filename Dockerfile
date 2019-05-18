@@ -9,5 +9,7 @@ RUN mkdir $APP_ROOT
 WORKDIR $APP_ROOT
 
 COPY . $APP_ROOT
+
 RUN bundle install --without development test
 RUN rake assets:precompile
+RUN rm config/master.key
