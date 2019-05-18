@@ -1,4 +1,6 @@
 class Person < ApplicationRecord
+  has_paper_trail
+
   extend Enumerize
 
   belongs_to :site

@@ -66,3 +66,4 @@ gem "seedbank"
 gem 'phonelib'
 gem 'enumerize'
 gem 'simple_form'
+gem 'paper_trail'

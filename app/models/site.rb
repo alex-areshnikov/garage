@@ -1,5 +1,7 @@
 class Site < ApplicationRecord
-  has_many :people
+  has_paper_trail
+
+  has_many :people, dependent: :destroy
 
   validates_presence_of :name
 end
