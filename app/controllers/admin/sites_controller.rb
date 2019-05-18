@@ -1,6 +1,6 @@
 module Admin
   class SitesController < Admin::ApplicationController
-    before_action :set_site, only: [:show, :edit, :update, :destroy]
+    before_action :set_site, only: %i[show edit update destroy]
 
     def index
       @sites = Site.all

@@ -1,0 +1,6 @@
+ru:
+  enumerize:
+    person:
+      person_type:
+        owner: "Владелец"
+        renter: "Арендатор"

@@ -1,14 +1,20 @@
 .card.card-form
   .row.no-gutters
     .card-body
-      h1
-        = @site.name
+      .row
+        .col-6
+          h1
+            = @site.name
+        .col-6.d-flex.justify-content-end
+          = link_to content_tag(:i, 'delete', class: 'material-icons large'), admin_site_path(@site), class: 'text-danger',
+                  title: t(:destroy), method: :delete,
+                  data: {toggle: "tooltip", placement: "top", confirm: t(:are_you_sure), cancel: t(:cancel), commit: t(:confirm)}
 
       .row.mt-4.mb-2
         .col-md-4
           strong #{t('activerecord.attributes.site.area')}:
         .col-md-8
-          = @site.area.blank? ? t(:unknown) : @site.area
+          = unknown_if_blank @site.area
 
       .row.my-2
         .col-md-4
@@ -39,7 +45,7 @@
         .col-md-4
           strong #{t('activerecord.attributes.site.cars_count')}:
         .col-md-8
-          = @site.cars_count.blank? ? t(:unknown) : @site.cars_count
+          = unknown_if_blank @site.cars_count
 
       .row.my-2
         .col-md-4
@@ -52,7 +58,7 @@
           .col-md-4
             strong #{t('activerecord.attributes.site.electricity_counter_name')}:
           .col-md-8
-            = @site.electricity_counter_name.blank? ? t(:unknown) : @site.electricity_counter_name
+            = unknown_if_blank @site.electricity_counter_name
 
         .row.my-2
           .col-md-4
@@ -66,3 +72,22 @@
             = link_to t(:edit), edit_admin_site_path(@site), class: 'btn btn-primary'
           .col.px-1
             = link_to t(:back), admin_sites_path, class: 'btn btn-outline-secondary'
+
+
+- @site.people.group_by(&:person_type).each do |person_type, people|
+  .card.card-form.w-100
+    .card-body
+      .row.mb-4
+        .col-6
+          h1
+            = t("#{person_type}s")
+        .col-6.d-flex.justify-content-end
+          = link_to content_tag(:i, 'edit', class: 'material-icons large'), admin_site_people_path(@site), class: 'text-secondary'
+
+      - people.each do |person|
+        .row.my-2
+          .col-md-4
+            strong
+              = person.full_name
+          .col-md-8 |
+            +375 29 2313213

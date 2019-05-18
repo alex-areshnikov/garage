@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_17_162753) do
+ActiveRecord::Schema.define(version: 2019_05_18_162710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "people", force: :cascade do |t|
+    t.string "first_name"
+    t.string "middle_name"
+    t.string "last_name"
+    t.bigint "site_id"
+    t.date "birthdate"
+    t.string "person_type"
+    t.string "passport_number"
+    t.string "passport_issued_by"
+    t.date "passport_issue_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_people_on_site_id"
+  end
 
   create_table "sites", force: :cascade do |t|
     t.string "name"
@@ -47,4 +62,5 @@ ActiveRecord::Schema.define(version: 2019_05_17_162753) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "people", "sites"
 end

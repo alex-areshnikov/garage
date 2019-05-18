@@ -64,3 +64,5 @@ gem 'sprockets-es6'
 gem 'pg'
 gem "seedbank"
 gem 'phonelib'
+gem 'enumerize'
+gem 'simple_form'

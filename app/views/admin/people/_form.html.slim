@@ -1,0 +1,20 @@
+.mt-4
+  = simple_form_for [:admin, person.site, person] do |form|
+    = form.input :first_name
+    = form.input :middle_name
+    = form.input :last_name
+    = form.input :birthdate, start_year: (Date.current - 80.years).year, end_year: Date.current.year
+    = form.input :person_type, include_blank: false
+    = form.input :passport_number
+    = form.input :passport_issued_by
+    = form.input :passport_issue_date, start_year: (Date.current - 20.years).year, end_year: Date.current.year
+
+    .d-flex.justify-content-center
+      .actions.row
+        .col.px-1
+          = form.button :submit, t(person.new_record? ? :create : :save), class: "btn btn-primary"
+        - unless person.new_record?
+          .col.px-1
+            = link_to t(:show), admin_site_person_path(person.site, person), class: 'btn btn-success'
+        .col.px-1
+          = link_to t(:back), admin_site_people_path(person.site), class: 'btn btn-outline-secondary'

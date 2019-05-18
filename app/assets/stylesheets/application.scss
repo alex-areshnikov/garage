@@ -23,7 +23,7 @@
 @import 'button';
 @import 'breadcrumb';
 @import 'form';
-@import 'input-group';
+//@import 'input-group';
 @import 'progress';
 @import 'list-group';
 @import 'borders';
@@ -38,4 +38,15 @@
   -webkit-transition: none;
   transition: none;
   display: none;
+}
+
+a {
+  color: #105ab3;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #136553;
+  text-decoration: none;
 }

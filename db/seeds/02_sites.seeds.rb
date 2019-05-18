@@ -5,7 +5,7 @@ ActiveRecord::Base.transaction do
   Site.create!(name: "001A")
 
   # built site
-  Site.create!(name: "005Д", built: true, basement: true, registered: true, cars_count: 2)
+  Site.create!(name: "005Д", area: 1500, built: true, basement: true, registered: true, cars_count: 2)
 
   # built site with electricity
   Site.create!(

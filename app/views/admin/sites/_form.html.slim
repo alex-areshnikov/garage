@@ -19,10 +19,10 @@
     .form-group.form-check
       = form.check_box :built, class: "form-check-input",
               data: { toggle: "collapse", target: "#register-section"},
-              aria: { controls: "register-section", expanded: @site.built }
+              aria: { controls: "register-section", expanded: site.built }
       = form.label :built, class: "form-check-label"
 
-    #register-section.form-group.form-check.collapse class="#{"show" if @site.built}"
+    #register-section.form-group.form-check.collapse class="#{"show" if site.built}"
       = form.check_box :registered, class: "form-check-input"
       = form.label :registered, class: "form-check-label"
 
@@ -42,10 +42,10 @@
     .form-group.form-check
       = form.check_box :electricity, class: "form-check-input",
               data: { toggle: "collapse", target: "#electricity-section"},
-              aria: { controls: "electricity-section", expanded: @site.electricity }
+              aria: { controls: "electricity-section", expanded: site.electricity }
       = form.label :electricity, class: "form-check-label"
 
-    #electricity-section.collapse class="#{"show" if @site.electricity}"
+    #electricity-section.collapse class="#{"show" if site.electricity}"
       .form-group.row
         = form.label :electricity_counter_name, class: 'col-sm-4 col-form-label'
         .col-sm-8.col-md-4
@@ -60,8 +60,8 @@
       .actions.row
         .col.px-1
           = form.submit class: 'btn btn-primary'
-        - unless @site.new_record?
+        - unless site.new_record?
           .col.px-1
-            = link_to t(:show), admin_site_path(@site), class: 'btn btn-success'
+            = link_to t(:show), admin_site_path(site), class: 'btn btn-success'
         .col.px-1
           = link_to t(:back), admin_sites_path, class: 'btn btn-outline-secondary'
