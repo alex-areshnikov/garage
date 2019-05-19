@@ -2,11 +2,11 @@
   .row.no-gutters
     .card-body
       .row
-        .col-6
+        .col-8
           h1
             = @person.full_name
 
-        .col-6.d-flex.justify-content-end
+        .col-4.d-flex.justify-content-end
           .pl-3
             = link_to content_tag(:i, 'edit', class: 'material-icons'), edit_admin_site_person_path(@person.site, @person),
                   class: 'text-secondary', title: t(:edit), data: {toggle: "tooltip", placement: "top"}
@@ -48,7 +48,7 @@
       - if @person.phones.exists?
         .row.mt-5
           .col-md-4
-            strong #{t('phones')}:
+            strong #{t :phones}:
 
       - @person.phones.each do |phone|
         .row.my-2

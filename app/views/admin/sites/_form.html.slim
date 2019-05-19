@@ -14,7 +14,7 @@
     .form-group.row
       = form.label :area, class: 'col-sm-4 col-form-label'
       .col-sm-8.col-md-4
-        = form.number_field :area, class: 'form-control'
+        = form.number_field :area, step: :any, class: 'form-control'
 
     .form-group.form-check
       = form.check_box :built, class: "form-check-input",

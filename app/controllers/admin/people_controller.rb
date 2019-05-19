@@ -1,7 +1,7 @@
 module Admin
   class PeopleController < Admin::ApplicationController
     def index
-      @people = site.people.all
+      @people = site.people.order(:id).all
     end
 
     def show

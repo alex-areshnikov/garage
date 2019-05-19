@@ -3,7 +3,7 @@ module Admin
     before_action :set_site, only: %i[show edit update destroy]
 
     def index
-      @sites = Site.all
+      @sites = Site.order(:name).all
     end
 
     def show; end

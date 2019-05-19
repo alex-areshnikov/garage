@@ -75,10 +75,10 @@
   .card.card-form.w-100
     .card-body
       .row.mb-4
-        .col-6
+        .col-8
           h1
             = t("#{person_type}s")
-        .col-6.d-flex.justify-content-end
+        .col-4.d-flex.justify-content-end
           = link_to content_tag(:i, 'edit', class: 'material-icons large'), admin_site_people_path(@site), class: 'text-secondary',
                   title: t(:edit), data: {toggle: "tooltip", placement: "top" }
 
@@ -88,12 +88,16 @@
             strong
               = person.full_name
           .col-md-8
-            - person.phones.each do |phone|
-              .row.mb-4
-                .col-md-4
-                  = phone.full_number
-                .col-md-8
-                  = phone.description
+            - if person.phones.exists?
+              - person.phones.each do |phone|
+                .row.mb-4
+                  .col-md-4
+                    = phone.full_number
+                  .col-md-8
+                    = phone.description
+            - else
+              .text-muted
+                = t :no_phones
 
 .d-flex.justify-content-center.mt-4
   .actions.row

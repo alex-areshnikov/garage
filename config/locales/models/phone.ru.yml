@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    models:
+      phone: "телефон"
+    attributes:
+      user:
+        password: "Пароль"
+        remember_me: "Запомнить меня"
