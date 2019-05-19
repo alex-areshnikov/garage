@@ -1,0 +1,7 @@
+- if @breadcrumbs.present?
+  nav aria-label="breadcrumb"
+    ol class="breadcrumb"
+      - @breadcrumbs.each do |type, value, path, active|
+        = content_tag(:li, class: "breadcrumb-item #{"active" if active}") do
+          - content_text = (type == Breadcrumbs::Constants::ICON ? content_tag(:i, value, class: 'material-icons icon-20pt') : value)
+          - active ? content_text : link_to(content_text, path)

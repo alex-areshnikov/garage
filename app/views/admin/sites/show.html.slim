@@ -71,7 +71,7 @@
             = @site.electricity_counter_expiration_date
 
 
-- @site.people.group_by(&:person_type).each do |person_type, people|
+- @site.people.order(:person_type, :id).group_by(&:person_type).each do |person_type, people|
   .card.card-form.w-100
     .card-body
       .row.mb-4
@@ -79,7 +79,7 @@
           h1
             = t("#{person_type}s")
         .col-4.d-flex.justify-content-end
-          = link_to content_tag(:i, 'edit', class: 'material-icons large'), admin_site_people_path(@site), class: 'text-secondary',
+          = link_to content_tag(:i, 'edit', class: 'material-icons'), admin_site_people_path(@site), class: 'text-secondary',
                   title: t(:edit), data: {toggle: "tooltip", placement: "top" }
 
       - people.each do |person|

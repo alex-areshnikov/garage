@@ -1,6 +1,3 @@
-h3.mb-4
-  = link_to "#{t 'activerecord.models.site'} #{@site.name}", admin_site_path(@site)
-
 - @people.group_by(&:person_type).each do |person_type, people|
   .card.card-form.w-100
     .card-body
