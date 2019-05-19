@@ -8,6 +8,8 @@ class Person < ApplicationRecord
 
   validates_presence_of :first_name, :last_name, :person_type
 
+  accepts_nested_attributes_for :phones, allow_destroy: true
+
   enumerize :person_type, in: People::Constants::PERSON_TYPES, default: People::Constants::OWNER
 
   def name

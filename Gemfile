@@ -68,3 +68,4 @@ gem 'enumerize'
 gem 'simple_form'
 gem 'paper_trail'
 gem 'awesome_print'
+gem "cocoon"

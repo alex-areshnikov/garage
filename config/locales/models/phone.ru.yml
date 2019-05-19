@@ -3,6 +3,6 @@ ru:
     models:
       phone: "телефон"
     attributes:
-      user:
-        password: "Пароль"
-        remember_me: "Запомнить меня"
+      phone:
+        number: "Номер"
+        description: "Описание"

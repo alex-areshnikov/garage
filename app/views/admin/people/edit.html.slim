@@ -1,9 +1,7 @@
-.row.d-flex.justify-content-center
-  .col-lg-6.col-md-8
-    .card.card-form
-      .row.no-gutters
-        .card-body
-          h1
-            = t :edit
+.card.card-form
+  .row.no-gutters
+    .card-body
+      h1
+        = t :edit
 
-          = render 'form', person: @person
+      = render 'form', person: @person
