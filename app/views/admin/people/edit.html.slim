@@ -1,7 +1,13 @@
 .card.card-form
   .row.no-gutters
     .card-body
-      h1
-        = t :edit
+      .row
+        .col-8
+          h1
+            = t :edit
+        .col-4.d-flex.justify-content-end
+          = link_to content_tag(:i, 'delete', class: 'material-icons large'), admin_person_path(@person),
+                  class: 'text-danger', title: t(:destroy), method: :delete,
+                  data: {toggle: "tooltip", placement: "top", confirm: t(:are_you_sure), cancel: t(:cancel), commit: t(:confirm)}
 
       = render 'form', person: @person

@@ -3,9 +3,9 @@
 module Breadcrumbs
   class Person < Breadcrumbs::People
     def initialize(person)
-      super(person.site)
+      super()
 
-      add_breadcrumb_text(person.full_name, admin_site_person_path(person.site, person))
+      add_breadcrumb_text(person.full_name, admin_person_path(person))
     end
 
     def edit_action

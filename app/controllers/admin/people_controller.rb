@@ -1,9 +1,9 @@
 module Admin
   class PeopleController < Admin::ApplicationController
     def index
-      @people = site.people.order(:person_type, :id).all
+      @people = Person.order(:last_name, :first_name).all
 
-      @breadcrumbs = Breadcrumbs::People.new(site)
+      @breadcrumbs = Breadcrumbs::People.new
     end
 
     def show
@@ -11,9 +11,9 @@ module Admin
     end
 
     def new
-      @person = site.people.build
+      @person = Person.new
 
-      @breadcrumbs = Breadcrumbs::People.new(site)
+      @breadcrumbs = Breadcrumbs::People.new
       @breadcrumbs.new_action
     end
 
@@ -23,10 +23,10 @@ module Admin
     end
 
     def create
-      @person = site.people.new(person_params)
+      @person = Person.new(person_params)
 
       if @person.save
-        redirect_to admin_site_person_path(site, @person), notice: t(:was_created, name: @person.full_name)
+        redirect_to admin_person_path(@person), notice: t(:was_created, name: @person.full_name)
       else
         render :new
       end
@@ -34,7 +34,7 @@ module Admin
 
     def update
       if person.update(person_params)
-        redirect_to admin_site_person_path(site, @person), notice: t(:was_updated, name: @person.full_name)
+        redirect_to admin_person_path(@person), notice: t(:was_updated, name: @person.full_name)
       else
         render :edit
       end
@@ -43,21 +43,17 @@ module Admin
     def destroy
       person.destroy
 
-      redirect_to admin_site_people_path(site), notice: t(:was_destroyed, name: person.full_name)
+      redirect_to admin_people_path, notice: t(:was_destroyed, name: person.full_name)
     end
 
     private
 
     def person
-      @person ||= site.people.find(params[:id])
-    end
-
-    def site
-      @site ||= Site.find(params[:site_id])
+      @person ||= Person.find(params[:id])
     end
 
     def person_params
-      params.require(:person).permit(:first_name, :middle_name, :last_name, :birthdate, :person_type,
+      params.require(:person).permit(:first_name, :middle_name, :last_name, :birthdate,
                                      :passport_number, :passport_issued_by, :passport_issue_date,
                                      phones_attributes: %i[id number description _destroy])
     end

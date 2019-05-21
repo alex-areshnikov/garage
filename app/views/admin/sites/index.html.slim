@@ -11,9 +11,6 @@
             td
               .d-flex.justify-content-end
                 .pl-3
-                  = link_to content_tag(:i, 'people', class: 'material-icons'), admin_site_people_path(site), class: 'text-secondary',
-                          title: "#{t :owners}/#{t :renters}", data: {toggle: "tooltip", placement: "top"}
-                .pl-3
                   = link_to content_tag(:i, 'edit', class: 'material-icons'), edit_admin_site_path(site), class: 'text-secondary',
                           title: t(:edit), data: {toggle: "tooltip", placement: "top"}
 

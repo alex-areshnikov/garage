@@ -1,25 +1,24 @@
-- @people.group_by(&:person_type).each do |person_type, people|
-  .card.card-form.w-100
-    .card-body
-      h1
-        = t "#{person_type}s"
+.card.card-form.w-100
+  .card-body
+    h1
+      = t :people
 
-      table.table.table-hover.mt-4
-        tbody
-          - people.each do |person|
-            tr
-              td
-                = link_to person.full_name,  admin_site_person_path(person.site, person)
-              td
-                .d-flex.justify-content-end
-                  .pl-3
-                    = link_to content_tag(:i, 'edit', class: 'material-icons'), edit_admin_site_person_path(person.site, person), class: 'text-secondary',
-                            title: t(:edit), data: {toggle: "tooltip", placement: "top"}
+    table.table.table-hover.mt-4
+      tbody
+        - @people.each do |person|
+          tr
+            td
+              = link_to person.full_name,  admin_person_path(person)
+            td
+              .d-flex.justify-content-end
+                .pl-3
+                  = link_to content_tag(:i, 'edit', class: 'material-icons'), edit_admin_person_path(person), class: 'text-secondary',
+                          title: t(:edit), data: {toggle: "tooltip", placement: "top"}
 
 
 .d-flex.justify-content-center
   .actions.row
     .col.px-1
-      = link_to t(:add), new_admin_site_person_path, class: 'float-right btn btn-primary'
+      = link_to t(:add), new_admin_person_path, class: 'float-right btn btn-primary'
     .col.px-1
-      = link_to t(:back), admin_sites_path, class: 'float-right btn btn-secondary'
+      = link_to t(:back), admin_home_index_path, class: 'float-right btn btn-secondary'

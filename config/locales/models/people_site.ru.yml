@@ -1,0 +1,9 @@
+ru:
+  activerecord:
+    models:
+      people_site: "Человеки-участки"
+    attributes:
+      people_site:
+        person: "Человек"
+        site: "Участок"
+        relationship: "Тип"

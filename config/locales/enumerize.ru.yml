@@ -1,6 +1,6 @@
 ru:
   enumerize:
-    person:
-      person_type:
+    people_site:
+      relationship:
         owner: "Владелец"
         renter: "Арендатор"

@@ -1,0 +1,23 @@
+.card.card-form.w-100
+  .card-body
+    .row.mb-4
+      .col
+        h3
+          = caption
+
+    - people.order(:last_name, :first_name).each do |person|
+      .row.my-2
+        .col-md-4
+          strong
+            = link_to person.full_name, admin_person_path(person)
+        .col-md-8
+          - if person.phones.exists?
+            - person.phones.each do |phone|
+              .row.mb-4
+                .col-md-4
+                  = phone.full_number
+                .col-md-8
+                  = phone.description
+          - else
+            .text-muted
+              = t :no_phones

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_18_224728) do
+ActiveRecord::Schema.define(version: 2019_05_20_002825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,13 +21,21 @@ ActiveRecord::Schema.define(version: 2019_05_18_224728) do
     t.string "last_name"
     t.bigint "site_id"
     t.date "birthdate"
-    t.string "person_type"
+    t.string "address"
     t.string "passport_number"
     t.string "passport_issued_by"
     t.date "passport_issue_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["site_id"], name: "index_people_on_site_id"
+  end
+
+  create_table "people_sites", force: :cascade do |t|
+    t.bigint "site_id"
+    t.bigint "person_id"
+    t.string "relationship"
+    t.index ["person_id"], name: "index_people_sites_on_person_id"
+    t.index ["site_id"], name: "index_people_sites_on_site_id"
   end
 
   create_table "phones", force: :cascade do |t|
@@ -93,5 +101,7 @@ ActiveRecord::Schema.define(version: 2019_05_18_224728) do
   end
 
   add_foreign_key "people", "sites"
+  add_foreign_key "people_sites", "people"
+  add_foreign_key "people_sites", "sites"
   add_foreign_key "phones", "people"
 end

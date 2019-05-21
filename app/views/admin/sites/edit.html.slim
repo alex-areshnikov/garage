@@ -1,7 +1,13 @@
 .card.card-form
   .row.no-gutters
     .card-body
-      h1
-        = "#{t :edit} #{t 'activerecord.models.site'}"
+      .row
+        .col-8
+          h1
+            = "#{t :edit} #{t 'activerecord.models.site'}"
+        .col-4.d-flex.justify-content-end
+          = link_to content_tag(:i, 'delete', class: 'material-icons'), admin_site_path(@site), class: 'text-danger',
+                  title: t(:destroy), method: :delete,
+                  data: {toggle: "tooltip", placement: "top", confirm: t(:are_you_sure), cancel: t(:cancel), commit: t(:confirm)}
 
       = render 'form', site: @site

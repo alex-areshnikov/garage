@@ -1,19 +1,22 @@
 class Person < ApplicationRecord
   has_paper_trail
 
-  extend Enumerize
-
-  belongs_to :site
   has_many :phones, dependent: :destroy
 
-  validates_presence_of :first_name, :last_name, :person_type
+  has_many :people_sites, dependent: :destroy
+  has_many :sites, through: :people_sites
+
+  validates_presence_of :first_name, :last_name
+  validates_uniqueness_of :last_name, scope: :first_name
 
   accepts_nested_attributes_for :phones, allow_destroy: true
 
-  enumerize :person_type, in: People::Constants::PERSON_TYPES, default: People::Constants::OWNER
-
   def name
     "#{first_name} #{last_name}"
+  end
+
+  def relationship(site)
+    people_sites.find_by(site: site)&.relationship
   end
 
   def full_name

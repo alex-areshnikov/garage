@@ -2,7 +2,7 @@
 
 module People
   module Constants
-    PERSON_TYPES = [
+    TYPES = [
       OWNER = "owner",
       RENTER = "renter"
     ].freeze

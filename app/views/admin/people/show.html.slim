@@ -8,24 +8,24 @@
 
         .col-4.d-flex.justify-content-end
           .pl-3
-            = link_to content_tag(:i, 'edit', class: 'material-icons'), edit_admin_site_person_path(@person.site, @person),
+            = link_to content_tag(:i, 'edit', class: 'material-icons'), edit_admin_person_path(@person),
                   class: 'text-secondary', title: t(:edit), data: {toggle: "tooltip", placement: "top"}
           .pl-3
-            = link_to content_tag(:i, 'delete', class: 'material-icons large'), admin_site_person_path(@person.site, @person),
+            = link_to content_tag(:i, 'delete', class: 'material-icons large'), admin_person_path(@person),
                   class: 'text-danger', title: t(:destroy), method: :delete,
                   data: {toggle: "tooltip", placement: "top", confirm: t(:are_you_sure), cancel: t(:cancel), commit: t(:confirm)}
 
       .row.mt-4.mb-2
         .col-md-4
-          strong #{t('activerecord.attributes.person.birthdate')}:
+          strong #{t('activerecord.attributes.person.address')}:
         .col-md-8
-          = unknown_if_blank @person.birthdate
+          = unknown_if_blank @person.address
 
       .row.my-2
         .col-md-4
-          strong #{t('activerecord.attributes.person.person_type')}:
+          strong #{t('activerecord.attributes.person.birthdate')}:
         .col-md-8
-          = unknown_if_blank @person.person_type_text
+          = unknown_if_blank @person.birthdate
 
       .row.my-2
         .col-md-4
@@ -61,4 +61,4 @@
 .d-flex.justify-content-center.mt-4
   .actions.row
     .col.px-1
-      = link_to t(:back), admin_site_people_path(@person.site), class: 'btn btn-secondary'
+      = link_to t(:back), admin_people_path, class: 'btn btn-secondary'

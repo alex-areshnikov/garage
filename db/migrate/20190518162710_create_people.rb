@@ -6,7 +6,7 @@ class CreatePeople < ActiveRecord::Migration[5.2]
       t.string :last_name
       t.belongs_to :site, foreign_key: true
       t.date :birthdate
-      t.string :person_type
+      t.string :address
       t.string :passport_number
       t.string :passport_issued_by
       t.date :passport_issue_date

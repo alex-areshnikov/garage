@@ -1,65 +1,41 @@
 .mt-4
-  = form_with(model: [:admin, site], local: true) do |form|
-    - if site.errors.any?
-      #error_explanation.alert.alert-danger
-        - site.errors.full_messages.each do |message|
-          = message
+  = simple_form_for [:admin, site], wrapper: :horizontal_form do |site_form|
+    .col-lg-8.col-md-10
+      = site_form.input :name
+      = site_form.input :area
 
-    .form-group.row
-      .col-sm-4.col-form-label
-        = form.label :name
-      .col-sm-8.col-md-4
-        = form.text_field :name, class: 'form-control'
+      = site_form.input :built, input_html: { data: { toggle: "collapse", target: "#register-section"},
+              aria: { controls: "register-section", expanded: site.built } }
 
-    .form-group.row
-      = form.label :area, class: 'col-sm-4 col-form-label'
-      .col-sm-8.col-md-4
-        = form.number_field :area, step: :any, class: 'form-control'
+      #register-section.collapse class="#{"show" if site.built}"
+        = site_form.input :registered
 
-    .form-group.form-check
-      = form.check_box :built, class: "form-check-input",
-              data: { toggle: "collapse", target: "#register-section"},
-              aria: { controls: "register-section", expanded: site.built }
-      = form.label :built, class: "form-check-label"
+      = site_form.input :basement
+      = site_form.input :rented
+      = site_form.input :cars_count
 
-    #register-section.form-group.form-check.collapse class="#{"show" if site.built}"
-      = form.check_box :registered, class: "form-check-input"
-      = form.label :registered, class: "form-check-label"
 
-    .form-group.form-check
-      = form.check_box :basement, class: "form-check-input"
-      = form.label :basement, class: "form-check-label"
+      = site_form.input :electricity, input_html: { data: { toggle: "collapse", target: "#electricity-section"},
+              aria: { controls: "electricity-section", expanded: site.electricity } }
 
-    .form-group.form-check
-      = form.check_box :rented, class: "form-check-input"
-      = form.label :rented, class: "form-check-label"
+      #electricity-section.collapse class="#{"show" if site.electricity}"
+        = site_form.input :electricity_counter_name
+        = site_form.input :electricity_counter_expiration_date
 
-    .form-group.row
-      = form.label :cars_count, class: 'col-sm-4 col-form-label'
-      .col-sm-8.col-md-4
-        = form.number_field :cars_count, class: 'form-control'
+      hr
+      h5
+        = "#{t(:people)}:"
 
-    .form-group.form-check
-      = form.check_box :electricity, class: "form-check-input",
-              data: { toggle: "collapse", target: "#electricity-section"},
-              aria: { controls: "electricity-section", expanded: site.electricity }
-      = form.label :electricity, class: "form-check-label"
+      = site_form.simple_fields_for :people_sites, wrapper: :horizontal_form do |people_site|
+        = render 'people_site_fields', f: people_site
 
-    #electricity-section.collapse class="#{"show" if site.electricity}"
-      .form-group.row
-        = form.label :electricity_counter_name, class: 'col-sm-4 col-form-label'
-        .col-sm-8.col-md-4
-          = form.text_field :electricity_counter_name, class: 'form-control'
-
-      .form-group.row
-        = form.label :electricity_counter_expiration_date, class: 'col-sm-4 col-form-label'
-        .col-sm-8.col-md-4
-          = form.date_select :electricity_counter_expiration_date, class: 'form-control'
+      .links.my-4
+        = link_to_add_association t(:add), site_form, :people_sites
 
     .d-flex.justify-content-center
       .actions.row
         .col.px-1
-          = form.submit class: 'btn btn-primary'
+          = site_form.submit class: 'btn btn-primary'
         - unless site.new_record?
           .col.px-1
             = link_to t(:show), admin_site_path(site), class: 'btn btn-success'

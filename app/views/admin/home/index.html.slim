@@ -1,5 +1,15 @@
-h1
-  = t :hello
+.row
+  .col-lg-3.col-md-5.col-sm-6
+    .card
+      .card-body
+        h5.card-title
+          = t(:sites)
 
-div
-  = link_to t(:sites), admin_sites_path
+        = link_to content_tag(:i, 'home', class: 'material-icons pr-1') + t(:sites), admin_sites_path, class: 'btn btn-primary'
+  .col-lg-3.col-md-5.col-sm-6
+    .card
+      .card-body
+        h5.card-title
+          = t(:people)
+
+        = link_to content_tag(:i, 'people', class: 'material-icons pr-1') + t(:people), admin_people_path, class: 'btn btn-primary'
