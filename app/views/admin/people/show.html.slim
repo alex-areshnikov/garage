@@ -1,12 +1,31 @@
 .card.card-form
   .row.no-gutters
     .card-body
-      .row
-        .col-8
-          h1
-            = @person.full_name
+      .d-flex.justify-content-between
+        div
+          .d-flex.justify-content-start.align-items-center
+            - if @person.avatar?
+              .pr-2.d-block.d-md-none
+                = image_tag @person.avatar.thumb.url, class: 'rounded clickable', data: { toggle: "modal", target: "#avatar-modal" }
 
-        .col-4.d-flex.justify-content-end
+              #avatar-modal.modal tabindex="-1" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true"
+                .modal-dialog role="document"
+                  .modal-content
+                    .modal-body.d-flex.justify-content-center
+                      = image_tag @person.avatar_url, class: 'rounded img-thumbnail'
+
+            div
+              h1.d-none.d-lg-block.mb-0
+                = @person.full_name
+              h2.d-none.d-md-block.d-lg-none.mb-0
+                = @person.full_name
+              h3.d-none.d-sm-block.d-md-none.mb-0
+                = @person.full_name
+
+              h5.d-sm-none.mb-0
+                = @person.full_name
+
+        .d-flex.justify-content-end
           .pl-3
             = link_to content_tag(:i, 'edit', class: 'material-icons'), edit_admin_person_path(@person),
                   class: 'text-secondary', title: t(:edit), data: {toggle: "tooltip", placement: "top"}
@@ -15,35 +34,40 @@
                   class: 'text-danger', title: t(:destroy), method: :delete,
                   data: {toggle: "tooltip", placement: "top", confirm: t(:are_you_sure), cancel: t(:cancel), commit: t(:confirm)}
 
-      .row.mt-4.mb-2
-        .col-md-4
-          strong #{t('activerecord.attributes.person.address')}:
-        .col-md-8
-          = unknown_if_blank @person.address
+      .d-flex.justify-content-md-between
+        .w-100
+          .row.mt-4.mb-2
+            .col-md-4
+              strong #{t('activerecord.attributes.person.address')}:
+            .col-md-8
+              = unknown_if_blank @person.address
 
-      .row.my-2
-        .col-md-4
-          strong #{t('activerecord.attributes.person.birthdate')}:
-        .col-md-8
-          = unknown_if_blank @person.birthdate
+          .row.my-2
+            .col-md-4
+              strong #{t('activerecord.attributes.person.birthdate')}:
+            .col-md-8
+              = unknown_if_blank @person.birthdate
 
-      .row.my-2
-        .col-md-4
-          strong #{t('activerecord.attributes.person.passport_number')}:
-        .col-md-8
-          = unknown_if_blank @person.passport_number
+          .row.my-2
+            .col-md-4
+              strong #{t('activerecord.attributes.person.passport_number')}:
+            .col-md-8
+              = unknown_if_blank @person.passport_number
 
-      .row.my-2
-        .col-md-4
-          strong #{t('activerecord.attributes.person.passport_issued_by')}:
-        .col-md-8
-          = unknown_if_blank @person.passport_issued_by, check_object: @person.passport_number
+          .row.my-2
+            .col-md-4
+              strong #{t('activerecord.attributes.person.passport_issued_by')}:
+            .col-md-8
+              = unknown_if_blank @person.passport_issued_by, check_object: @person.passport_number
 
-      .row.my-2
-        .col-md-4
-          strong #{t('activerecord.attributes.person.passport_issue_date')}:
-        .col-md-8
-          = unknown_if_blank @person.passport_issue_date, check_object: @person.passport_number
+          .row.my-2
+            .col-md-4
+              strong #{t('activerecord.attributes.person.passport_issue_date')}:
+            .col-md-8
+              = unknown_if_blank @person.passport_issue_date, check_object: @person.passport_number
+        - if @person.avatar?
+          .d-none.d-md-block
+            = image_tag @person.avatar_url, class: 'rounded img-thumbnail'
 
       - if @person.phones.exists?
         .row.mt-5

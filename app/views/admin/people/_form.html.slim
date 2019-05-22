@@ -1,9 +1,18 @@
 .mt-4
-  = simple_form_for [:admin, person], wrapper: :horizontal_form do |person_form|
+  = simple_form_for [:admin, person], html: { multipart: true }, wrapper: :horizontal_form do |person_form|
     .col-lg-8.col-md-10
       = person_form.input :first_name
       = person_form.input :middle_name
       = person_form.input :last_name
+      = person_form.input :avatar, as: :file, wrapper: :horizontal_file
+
+      - if person.avatar?
+        .row
+          .col-sm-3 &nbsp;
+          .col-sm-9
+            = image_tag @person.avatar.thumb.url, class: 'rounded clickable', data: { toggle: "modal", target: "#avatar-modal" }
+            = person_form.input :remove_avatar, as: :boolean
+
       = person_form.input :address
       = person_form.input :birthdate, wrapper: :horizontal_multi_select,
               start_year: (Date.current - 80.years).year, end_year: Date.current.year

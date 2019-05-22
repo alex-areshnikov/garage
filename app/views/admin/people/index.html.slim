@@ -8,9 +8,14 @@
         - @people.each do |person|
           tr
             td
-              = link_to person.full_name,  admin_person_path(person)
+              .d-flex.justify-content-start.align-items-center
+                - if person.avatar?
+                  div
+                    = image_tag person.avatar.thumb.url, class: "rounded", height: 30
+                div.p-2
+                  = link_to person.full_name,  admin_person_path(person)
             td
-              .d-flex.justify-content-end
+              .d-flex.justify-content-end.p-2
                 .pl-3
                   = link_to content_tag(:i, 'edit', class: 'material-icons'), edit_admin_person_path(person), class: 'text-secondary',
                           title: t(:edit), data: {toggle: "tooltip", placement: "top"}

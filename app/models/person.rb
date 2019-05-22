@@ -1,6 +1,8 @@
 class Person < ApplicationRecord
   has_paper_trail
 
+  mount_uploader :avatar, AvatarUploader
+
   has_many :phones, dependent: :destroy
 
   has_many :people_sites, dependent: :destroy

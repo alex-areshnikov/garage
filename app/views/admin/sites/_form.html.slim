@@ -20,7 +20,7 @@
 
       #electricity-section.collapse class="#{"show" if site.electricity}"
         = site_form.input :electricity_counter_name
-        = site_form.input :electricity_counter_expiration_date
+        = site_form.input :electricity_counter_expiration_date, as: :date, wrapper: :horizontal_multi_select
 
       hr
       h5

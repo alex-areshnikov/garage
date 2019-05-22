@@ -8,6 +8,7 @@
 .env.*
 
 public/assets
+public/uploads
 
 # Ignore bundler config.
 /.bundle

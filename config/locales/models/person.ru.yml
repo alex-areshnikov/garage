@@ -12,3 +12,5 @@ ru:
         passport_number: "Пасспорт номер"
         passport_issued_by: "Пасспорт кем выдан"
         passport_issue_date: "Пасспорт дата выдачи"
+        avatar: "Аватар"
+        remove_avatar: "Удалить аватар"

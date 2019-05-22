@@ -6,10 +6,23 @@
           = caption
 
     - people.order(:last_name, :first_name).each do |person|
+      hr
       .row.my-2
-        .col-md-4
-          strong
-            = link_to person.full_name, admin_person_path(person)
+        .col-md-4.d-flex
+          div
+          - if person.avatar?
+            .pr-2
+              = image_tag person.avatar.thumb.url, class: 'rounded clickable', data: {toggle: "modal", target: "#avatar-modal"}
+
+            #avatar-modal.modal tabindex="-1" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true"
+              .modal-dialog role="document"
+                .modal-content
+                  .modal-body.d-flex.justify-content-center
+                    = image_tag person.avatar_url, class: 'rounded img-thumbnail'
+
+          div
+            strong
+              = link_to person.full_name, admin_person_path(person)
         .col-md-8
           - if person.phones.exists?
             - person.phones.each do |phone|
