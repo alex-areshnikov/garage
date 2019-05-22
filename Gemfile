@@ -70,5 +70,5 @@ gem 'paper_trail'
 gem 'awesome_print'
 gem "cocoon"
 gem 'carrierwave'
-# gem 'carrierwave-aws'
+gem 'carrierwave-aws'
 gem "mini_magick"
