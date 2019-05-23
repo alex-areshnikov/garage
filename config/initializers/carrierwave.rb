@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 CarrierWave.configure do |config|
-  if ENV["REAL_PRODUCTION"].present?
+  if ENV["USE_AWS_S3_STORAGE"].present?
     config.storage = :aws
     config.aws_acl = "private"
     config.aws_authenticated_url_expiration = 1.day.to_i

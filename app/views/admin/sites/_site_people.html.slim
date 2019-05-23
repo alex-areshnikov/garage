@@ -12,9 +12,9 @@
           div
           - if person.avatar?
             .pr-2
-              = image_tag person.avatar.thumb.url, class: 'rounded clickable', data: {toggle: "modal", target: "#avatar-modal"}
+              = image_tag person.avatar.thumb.url, class: 'rounded clickable', data: {toggle: "modal", target: "#avatar-modal#{person.id}"}
 
-            #avatar-modal.modal tabindex="-1" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true"
+            .modal tabindex="-1" id="avatar-modal#{person.id}" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true"
               .modal-dialog role="document"
                 .modal-content
                   .modal-body.d-flex.justify-content-center

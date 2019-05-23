@@ -5,6 +5,7 @@
       = person_form.input :middle_name
       = person_form.input :last_name
       = person_form.input :avatar, as: :file, wrapper: :horizontal_file
+      = person_form.hidden_field :avatar_cache
 
       - if person.avatar?
         .row

@@ -53,7 +53,7 @@ module Admin
     end
 
     def person_params
-      params.require(:person).permit(:first_name, :middle_name, :last_name, :birthdate, :avatar, :remove_avatar,
+      params.require(:person).permit(:first_name, :middle_name, :last_name, :birthdate, :avatar, :remove_avatar, :avatar_cache,
                                      :passport_number, :passport_issued_by, :passport_issue_date,
                                      phones_attributes: %i[id number description _destroy])
     end
