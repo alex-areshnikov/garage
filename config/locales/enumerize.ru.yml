@@ -4,3 +4,7 @@ ru:
       relationship:
         owner: "Владелец"
         renter: "Арендатор"
+    document:
+      document_type:
+        generic: "Общие"
+        benefit: "Льгота"

@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+    models:
+      document: "Документ"
+    attributes:
+      document:
+        name: "Название"
+        description: "Описание"
+        file: "Файл"
+        document_type: "Тип документа"
+        certificate_number: "Номер удостоверения"
+        issued_by: "Кем выдан"
+        issued_date: "Дата выдачи"

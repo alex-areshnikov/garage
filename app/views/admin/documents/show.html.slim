@@ -1,0 +1,59 @@
+.card.card-form
+  .row.no-gutters
+    .card-body
+      .row
+        .col-8
+          h1
+            = @document.name
+        .col-4.d-flex.justify-content-end
+          .pl-3
+            = link_to content_tag(:i, 'file_download', class: 'material-icons'), @document.file_url, class: 'text-secondary',
+                    title: t(:download), data: {toggle: "tooltip", placement: "top"}
+          .pl-3
+            = link_to content_tag(:i, 'edit', class: 'material-icons'), public_send("edit_admin_#{@document.owner.class.name.parameterize}_document_path", @document.owner, @document), class: 'text-secondary',
+                    title: t(:edit), data: {toggle: "tooltip", placement: "top" }
+          .pl-3
+            = link_to content_tag(:i, 'delete', class: 'material-icons'), public_send("admin_#{@document.owner.class.name.parameterize}_document_path", @document.owner, @document), class: 'text-danger',
+                    title: t(:destroy), method: :delete,
+                    data: {toggle: "tooltip", placement: "top", confirm: t(:are_you_sure), cancel: t(:cancel), commit: t(:confirm)}
+
+      .row.mt-4.mb-2
+        .col-md-4
+          strong #{t('activerecord.attributes.document.file')}:
+        .col-md-8
+          = @document.filename
+
+      .row.mt-4.mb-2
+        .col-md-4
+          strong #{t('activerecord.attributes.document.description')}:
+        .col-md-8
+          = unknown_if_blank(@document.description, text: :no_description)
+
+      .row.mt-4.mb-2
+        .col-md-4
+          strong #{t('activerecord.attributes.document.document_type')}:
+        .col-md-8
+          = @document.document_type_text
+
+      .row.mt-4.mb-2
+        .col-md-4
+          strong #{t('activerecord.attributes.document.certificate_number')}:
+        .col-md-8
+          = unknown_if_blank @document.certificate_number
+
+      .row.mt-4.mb-2
+        .col-md-4
+          strong #{t('activerecord.attributes.document.issued_by')}:
+        .col-md-8
+          = unknown_if_blank @document.issued_by
+
+      .row.mt-4.mb-2
+        .col-md-4
+          strong #{t('activerecord.attributes.document.issued_date')}:
+        .col-md-8
+          = unknown_if_blank @document.issued_date
+
+.d-flex.justify-content-center.mt-4
+  .actions.row
+    .col.px-1
+      = link_to t(:back), public_send("admin_#{@document.owner.class.name.parameterize}_path", @document.owner), class: 'btn btn-secondary'

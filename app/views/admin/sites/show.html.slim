@@ -70,6 +70,7 @@
           .col-md-8
             = @site.electricity_counter_expiration_date
 
+= render '/shared/documents', owner: @site, add_path: new_admin_site_document_path(@site)
 
 = render 'site_people', people: @site.owners, caption: t(:owners) if @site.owners.exists?
 = render 'site_people', people: @site.renters, caption: t(:renters) if @site.renters.exists?

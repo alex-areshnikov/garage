@@ -1,0 +1,23 @@
+.card
+  .card-body
+    .row
+      .col-8
+        h3
+          = t(:documents)
+      .col-4.d-flex.justify-content-end
+        .pl-3
+          = link_to content_tag(:i, 'add', class: 'material-icons'), add_path, class: 'text-secondary',
+                  title: t(:add), data: {toggle: "tooltip", placement: "top"}
+
+    hr
+    - unless owner.documents.exists?
+      .text-muted
+        = t(:no_documents)
+    - owner.documents.each do |document|
+      .row.my-2
+        .col-10
+          = link_to document.name, public_send("admin_#{owner.class.name.parameterize}_document_path", owner, document)
+        .col-2.d-flex.justify-content-end
+          = link_to content_tag(:i, 'file_download', class: 'material-icons'), document.file_url, class: 'text-secondary',
+                  title: t(:download), data: {toggle: "tooltip", placement: "top"}
+

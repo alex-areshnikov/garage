@@ -12,6 +12,8 @@ class Site < ApplicationRecord
            -> { where(people_sites: { relationship: People::Constants::RENTER }) },
            source: :person, through: :people_sites
 
+  has_many :documents, as: :owner
+
   validates_presence_of :name
 
   accepts_nested_attributes_for :people_sites, allow_destroy: true

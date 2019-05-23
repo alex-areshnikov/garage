@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_21_031628) do
+ActiveRecord::Schema.define(version: 2019_05_23_024439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "documents", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "owner_type"
+    t.bigint "owner_id"
+    t.string "file"
+    t.string "document_type"
+    t.string "certificate_number"
+    t.string "issued_by"
+    t.string "issued_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_type", "owner_id"], name: "index_documents_on_owner_type_and_owner_id"
+  end
 
   create_table "people", force: :cascade do |t|
     t.string "first_name"

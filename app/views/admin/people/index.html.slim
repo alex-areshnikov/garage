@@ -11,7 +11,13 @@
               .d-flex.justify-content-start.align-items-center
                 - if person.avatar?
                   div
-                    = image_tag person.avatar.thumb.url, class: "rounded", height: 30
+                    = image_tag person.avatar.thumb.url, class: 'rounded clickable', height:30, data: {toggle: "modal", target: "#avatar-modal#{person.id}"}
+
+                    .modal tabindex="-1" id="avatar-modal#{person.id}" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true"
+                      .modal-dialog role="document"
+                        .modal-content
+                          .modal-body.d-flex.justify-content-center
+                            = image_tag person.avatar_url, class: 'rounded img-thumbnail'
                 div.p-2
                   = link_to person.full_name,  admin_person_path(person)
             td

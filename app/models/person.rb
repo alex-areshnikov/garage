@@ -4,6 +4,7 @@ class Person < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :phones, dependent: :destroy
+  has_many :documents, as: :owner
 
   has_many :people_sites, dependent: :destroy
   has_many :sites, through: :people_sites

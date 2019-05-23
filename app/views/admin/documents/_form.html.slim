@@ -1,0 +1,20 @@
+.mt-4
+  = simple_form_for [:admin, @document.owner, @document], html: { multipart: true }, wrapper: :horizontal_form do |document_form|
+    .col-lg-8.col-md-10
+      = document_form.input :name
+      = document_form.input :file, as: :file, wrapper: :horizontal_file
+      = document_form.input :description
+      = document_form.input :document_type
+      = document_form.input :certificate_number
+      = document_form.input :issued_by
+      = document_form.input :issued_date, wrapper: :horizontal_multi_select
+
+    .d-flex.justify-content-center
+      .actions.row
+        .col.px-1
+          = document_form.button :submit, t(@document.new_record? ? :create : :save), class: "btn btn-primary"
+        - unless @document.new_record?
+          .col.px-1
+            = link_to t(:show), public_send("admin_#{@document.owner.class.name.parameterize}_document_path", @document.owner, @document), class: 'btn btn-success'
+        .col.px-1
+          = link_to t(:back), public_send("admin_#{@document.owner.class.name.parameterize}_path", @document.owner), class: 'btn btn-outline-secondary'

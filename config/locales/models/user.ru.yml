@@ -1,5 +1,7 @@
 ru:
   activerecord:
+    models:
+      User: "Пользователь"
     attributes:
       user:
         password: "Пароль"

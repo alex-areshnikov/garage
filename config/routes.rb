@@ -7,7 +7,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :home, only: %i(index)
-    resources :sites
-    resources :people
+
+    resources :sites do
+      resources :documents, except: %i(index)
+    end
+
+    resources :people do
+      resources :documents, except: %i(index)
+    end
   end
 end

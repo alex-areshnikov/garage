@@ -5,6 +5,6 @@ module ApplicationHelper
 
   def unknown_if_blank(value, options={})
     check_object = options.fetch(:check_object, value)
-    check_object.blank? ? content_tag(:span, t(:unknown), class: 'text-muted') : value
+    check_object.blank? ? content_tag(:span, t(options.fetch(:text, :unknown)), class: 'text-muted') : value
   end
 end

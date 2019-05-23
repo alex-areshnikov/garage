@@ -1,0 +1,6 @@
+.card.card-form
+  .row.no-gutters
+    .card-body
+      h1 #{t :new} #{t 'activerecord.models.document'}
+
+      = render 'form', document: @document
