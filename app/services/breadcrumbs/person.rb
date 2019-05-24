@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Breadcrumbs
-  class Person < Breadcrumbs::People
+  class Person < Breadcrumbs::Base
     def initialize(person)
-      super()
+      @breadcrumbs = Breadcrumbs::People.new.breadcrumbs
 
       add_breadcrumb_text(person.full_name, admin_person_path(person))
     end

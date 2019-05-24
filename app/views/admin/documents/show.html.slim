@@ -2,10 +2,10 @@
   .row.no-gutters
     .card-body
       .row
-        .col-8
+        .col-md-10
           h1
-            = @document.name
-        .col-4.d-flex.justify-content-end
+            = @document.name.truncate(35)
+        .col-md-2.d-flex.justify-content-end
           .pl-3
             = link_to content_tag(:i, 'file_download', class: 'material-icons'), @document.file_url, class: 'text-secondary',
                     title: t(:download), data: {toggle: "tooltip", placement: "top"}
@@ -35,23 +35,24 @@
         .col-md-8
           = @document.document_type_text
 
-      .row.mt-4.mb-2
-        .col-md-4
-          strong #{t('activerecord.attributes.document.certificate_number')}:
-        .col-md-8
-          = unknown_if_blank @document.certificate_number
+      - if @document.document_type == Documents::Constants::BENEFIT
+        .row.mt-4.mb-2
+          .col-md-4
+            strong #{t('activerecord.attributes.document.certificate_number')}:
+          .col-md-8
+            = unknown_if_blank @document.certificate_number
 
-      .row.mt-4.mb-2
-        .col-md-4
-          strong #{t('activerecord.attributes.document.issued_by')}:
-        .col-md-8
-          = unknown_if_blank @document.issued_by
+        .row.mt-4.mb-2
+          .col-md-4
+            strong #{t('activerecord.attributes.document.issued_by')}:
+          .col-md-8
+            = unknown_if_blank @document.issued_by
 
-      .row.mt-4.mb-2
-        .col-md-4
-          strong #{t('activerecord.attributes.document.issued_date')}:
-        .col-md-8
-          = unknown_if_blank @document.issued_date
+        .row.mt-4.mb-2
+          .col-md-4
+            strong #{t('activerecord.attributes.document.issued_date')}:
+          .col-md-8
+            = unknown_if_blank @document.issued_date
 
 .d-flex.justify-content-center.mt-4
   .actions.row

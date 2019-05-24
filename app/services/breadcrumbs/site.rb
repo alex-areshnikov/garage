@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Breadcrumbs
-  class Site < Breadcrumbs::Sites
+  class Site < Breadcrumbs::Base
     def initialize(site)
-      super()
+      @breadcrumbs = Breadcrumbs::Sites.new.breadcrumbs
 
       add_breadcrumb_text(site.name, admin_site_path(site))
     end

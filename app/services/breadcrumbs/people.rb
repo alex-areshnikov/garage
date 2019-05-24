@@ -3,7 +3,7 @@
 module Breadcrumbs
   class People < Breadcrumbs::Base
     def initialize
-      super
+      @breadcrumbs = Breadcrumbs::Home.new.breadcrumbs
 
       add_breadcrumb_text(I18n.t(:people), admin_people_path)
     end

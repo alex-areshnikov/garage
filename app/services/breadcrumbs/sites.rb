@@ -3,7 +3,7 @@
 module Breadcrumbs
   class Sites < Breadcrumbs::Base
     def initialize
-      super
+      @breadcrumbs = Breadcrumbs::Home.new.breadcrumbs
 
       add_breadcrumb_text(I18n.t(:sites), admin_sites_path)
     end
