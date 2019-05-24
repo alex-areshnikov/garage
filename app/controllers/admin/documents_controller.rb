@@ -6,24 +6,14 @@ module Admin
 
     def show
       @document = owner.documents.find(params[:id])
-
-      @breadcrumbs = Breadcrumbs::Document.new(@document.owner)
-      @breadcrumbs.build(@document)
     end
 
     def new
       @document = Document.new(owner: owner)
-
-      @breadcrumbs = Breadcrumbs::Document.new(@document.owner)
-      @breadcrumbs.new_action
     end
 
     def edit
       @document = owner.documents.find(params[:id])
-
-      @breadcrumbs = Breadcrumbs::Document.new(@document.owner)
-      @breadcrumbs.build(@document)
-      @breadcrumbs.edit_action
     end
 
     def create

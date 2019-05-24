@@ -2,6 +2,8 @@
 
 module Breadcrumbs
   module Constants
+    ALLOWED_TEXT_SIZE = 40
+
     TYPES = [
       TEXT = "text",
       ICON = "icon"

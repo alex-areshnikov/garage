@@ -4,25 +4,15 @@ module Admin
 
     def index
       @sites = Site.order(:name).all
-
-      @breadcrumbs = Breadcrumbs::Sites.new
     end
 
-    def show
-      @breadcrumbs = Breadcrumbs::Site.new(@site)
-    end
+    def show; end
 
     def new
       @site = Site.new
-
-      @breadcrumbs = Breadcrumbs::Sites.new
-      @breadcrumbs.new_action
     end
 
-    def edit
-      @breadcrumbs = Breadcrumbs::Site.new(@site)
-      @breadcrumbs.edit_action
-    end
+    def edit; end
 
     def create
       @site = Site.new(site_params)

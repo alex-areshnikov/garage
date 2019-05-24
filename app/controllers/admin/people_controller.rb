@@ -2,24 +2,18 @@ module Admin
   class PeopleController < Admin::ApplicationController
     def index
       @people = Person.order(:last_name, :first_name).all
-
-      @breadcrumbs = Breadcrumbs::People.new
     end
 
     def show
-      @breadcrumbs = Breadcrumbs::Person.new(person)
+      person
     end
 
     def new
       @person = Person.new
-
-      @breadcrumbs = Breadcrumbs::People.new
-      @breadcrumbs.new_action
     end
 
     def edit
-      @breadcrumbs = Breadcrumbs::Person.new(person)
-      @breadcrumbs.edit_action
+      person
     end
 
     def create
