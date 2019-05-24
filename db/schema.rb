@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_23_024439) do
+ActiveRecord::Schema.define(version: 2019_05_24_190038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "base_rates", force: :cascade do |t|
+    t.integer "year"
+    t.decimal "rate", precision: 4, scale: 2
+  end
 
   create_table "documents", force: :cascade do |t|
     t.string "name"

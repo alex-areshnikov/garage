@@ -21,4 +21,6 @@
           #account_menu.dropdown-menu.dropdown-menu-right
             a.dropdown-item href="#{ root_path }" #{t :dashboard}
             .dropdown-divider
+            a.dropdown-item href="#{ admin_base_rates_path }" #{t 'activerecord.models.base_rate'}
+            .dropdown-divider
             a.dropdown-item href="#{ destroy_user_session_path }" #{t :log_out}

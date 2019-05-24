@@ -1,0 +1,24 @@
+.card.card-form.w-100
+  .card-body
+    h1
+      = t 'activerecord.models.base_rate'
+
+    table.table.mt-4
+      thead
+        tr
+          th
+            = t 'activerecord.attributes.base_rate.year'
+          th
+            = t 'activerecord.attributes.base_rate.rate'
+      tbody
+        - @base_rates.each do |base_rate|
+          tr
+            td
+              = base_rate.year
+            td
+              = number_to_currency base_rate.rate
+
+.d-flex.justify-content-center.mt-4
+  .actions.row
+    .col.px-1
+      = link_to t(:back), root_path, class: 'btn btn-secondary'

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :home, only: %i(index)
+    resources :base_rates, only: %i(index)
 
     resources :sites do
       resources :documents, except: %i(index)

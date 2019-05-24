@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    models:
+      base_rate: "Базовая ставка"
+    attributes:
+      base_rate:
+        year: "Год"
+        rate: "Ставка"
