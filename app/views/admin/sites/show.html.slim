@@ -70,6 +70,13 @@
           .col-md-8
             = @site.electricity_counter_expiration_date
 
+      - if @site.notes.present?
+        .row.my-2
+          .col-md-4
+            strong #{t('activerecord.attributes.site.notes')}:
+          .col-md-8
+            = @site.notes
+
 = render '/shared/documents', owner: @site, add_path: new_admin_site_document_path(@site)
 
 = render 'site_people', people: @site.owners, caption: t(:owners) if @site.owners.exists?

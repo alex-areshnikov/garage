@@ -57,7 +57,7 @@ module Admin
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def site_params
-      params.require(:site).permit(:name, :area, :built, :registered, :basement, :cars_count, :electricity,
+      params.require(:site).permit(:name, :area, :built, :registered, :basement, :cars_count, :electricity, :notes,
                                    :electricity_counter_name, :electricity_counter_expiration_date, :rented,
                                    people_sites_attributes: %i[id person_id site_id relationship _destroy])
     end

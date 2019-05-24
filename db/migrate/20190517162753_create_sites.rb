@@ -3,6 +3,7 @@ class CreateSites < ActiveRecord::Migration[5.2]
     create_table :sites do |t|
       t.string :name
       t.decimal :area, precision: 5, scale: 1
+      t.text :notes
       t.boolean :built
       t.boolean :registered
       t.boolean :basement

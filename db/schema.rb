@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_05_23_024439) do
   create_table "sites", force: :cascade do |t|
     t.string "name"
     t.decimal "area", precision: 5, scale: 1
+    t.text "notes"
     t.boolean "built"
     t.boolean "registered"
     t.boolean "basement"

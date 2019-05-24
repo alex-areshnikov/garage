@@ -4,7 +4,7 @@
       = document_form.input :name
       = document_form.input :file, as: :file, wrapper: :horizontal_file
       = document_form.input :description
-      = document_form.input :document_type
+      = document_form.input :document_type, include_blank: false
       = document_form.input :certificate_number
       = document_form.input :issued_by
       = document_form.input :issued_date, wrapper: :horizontal_multi_select
