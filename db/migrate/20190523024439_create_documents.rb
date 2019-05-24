@@ -8,7 +8,7 @@ class CreateDocuments < ActiveRecord::Migration[5.2]
       t.string :document_type
       t.string :certificate_number
       t.string :issued_by
-      t.string :issued_date
+      t.date :issued_date
 
       t.timestamps
     end

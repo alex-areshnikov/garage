@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_05_23_024439) do
     t.string "document_type"
     t.string "certificate_number"
     t.string "issued_by"
-    t.string "issued_date"
+    t.date "issued_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_type", "owner_id"], name: "index_documents_on_owner_type_and_owner_id"
